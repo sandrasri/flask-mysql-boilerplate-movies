@@ -1,21 +1,9 @@
--- This file is to bootstrap a database for the CS3200 project. 
 
--- Create a new database.  You can change the name later.  You'll
--- need this name in the FLASK API file(s),  the AppSmith 
--- data source creation.
 create database movie_db;
 
--- Via the Docker Compose file, a special user called webapp will 
--- be created in MySQL. We are going to grant that user 
--- all privilages to the new database we just created. 
--- TODO: If you changed the name of the database above, you need 
--- to change it here too.
 grant all privileges on movie_db.* to 'webapp'@'%';
 flush privileges;
 
--- Move into the database we just created.
--- TODO: If you changed the name of the database above, you need to
--- change it here too. 
 use movie_db;
 
 -- Put your DDL 
@@ -279,28 +267,9 @@ CREATE TABLE IF NOT EXISTS Movies (
     );
 
 insert into Movies (genre, language, movie_title, release_date, cast, synopsis, trailer, duration, movie_id)
-values ('Adventuristic Dystopian', 'English', 'Hunger Games', '2012-03-13 8:13:00',
-        'Jennifer Lawrence, Josh Hutcherson, Liam Hemsworth, Woody Harelson, Elizabeth Banks, Willow Shields, Donald Sutherland,
-        Stanley Tucci, Philip Seymour Hoffman, Lenny Kravitz, Wes Bentley, Toby Jones, Brooke Bundy, Nelson Ascencio',
-        'In what was once North America, the Capitol of Panem maintains its hold on its 12 districts by forcing them each
-        to select a boy and a girl, called Tributes, to compete in a nationally televised event called the Hunger Games.
-        Every citizen must watch as the youths fight to the death until only one remains. District 12 Tribute Katniss Everdeen
-        (Jennifer Lawrence) has little to rely on, other than her hunting skills and sharp instincts, in an arena where she
-        must weigh survival against love', 'https://youtu.be/mfmrPu43DF8?si=_7_4mB7eRxGsJu32', 123, 12),
-       ('Family/Adventure', 'English', 'Moana', '2016-12-12 8:13:00', 'Aulil Cravalho, Dwayne Johnson, Alan Tudyk, Jemaine Clement,
-Temuera Morrison, Lin-Manuel Miranda, Nicole Scherzinger, Rachel House, Puanani Cravalho,Oscar Kightley, Anthony
-Kavanagh', 'An adventurous teenager sails out on a daring mission to save her people. During her journey, Moana
-meets the once-mighty demigod Maui, who guides her in her quest to become a master way-finder. Together they sail
-across the open ocean on an action-packed voyage, encountering enormous monsters and impossible odds. Along the way,
-Moana fulfills the ancient quest of her ancestors and discovers the one thing she always sought: her own identity.',
-        'https://youtu.be/C6PbWhWGUrY?si=Ad_W_CR97AqxCrD', 105, 13),
-       ('Musical/Thriller', 'English', 'The Greatest Showman', '2017-03-29 8:13:00', 'Hugh Jackman, Zac Efron, Zendaya,
-Keala Settle, Michelle Williams, Rebecca Ferguson, Loren Allred, Cameron Seely, Austyn Johnson, Paul Sparks,
-Sam Humphrey', 'Growing up in the early 1800s, P.T. Barnum displays a natural talent for publicity and promotion,
-selling lottery tickets by age 12. After trying his hands at various jobs, P.T. turns to show business to indulge his
-limitless imagination, rising from nothing to create the Barnum & Bailey circus. Featuring catchy musical numbers,
-exotic performers and daring acrobatic feats, Barnum''s mesmerizing spectacle soon takes the world by storm to
-become the greatest show on Earth', 'https://youtu.be/jr9QtXwC9vc?si=a46nRADntlG9KXkg', 105, 14);
+values ('Adventuristic Dystopian', 'English', 'Hunger Games', '2012-03-13 8:13:00', 'Jennifer Lawrence', 'In what was once North America, the Capitol of Panem maintains its hold on its 12 districts by forcing them each to select a boy and a girl, called Tributes, to compete in a nationally televised event called the Hunger Games. Every citizen must watch as the youths fight to the death until only one remains. District 12 Tribute Katniss Everdeen (Jennifer Lawrence) has little to rely on, other than her hunting skills and sharp instincts, in an arena where she must weigh survival against love', 'https://youtu.be/mfmrPu43DF8?si=_7_4mB7eRxGsJu32', 123, 12),
+       ('Family/Adventure', 'English', 'Moana', '2016-12-12 8:13:00', 'Aulil Cravalho, Dwayne Johnson, Alan Tudyk, Jemaine Clement', 'An adventurous teenager sails out on a daring mission to save her people. During her journey, Moana meets the once-mighty demigod Maui, who guides her in her quest to become a master way-finder. Together they sail across the open ocean on an action-packed voyage, encountering enormous monsters and impossible odds. Along the way, Moana fulfills the ancient quest of her ancestors and discovers the one thing she always sought: her own identity.', 'https://youtu.be/C6PbWhWGUrY?si=Ad_W_CR97AqxCrD', 105, 13),
+       ('Musical/Thriller', 'English', 'The Greatest Showman', '2017-03-29 8:13:00', 'Hugh Jackman, Zac Efron, Zendaya', 'Growing up in the early 1800s, P.T. Barnum displays a natural talent for publicity and promotion, selling lottery tickets by age 12. After trying his hands at various jobs, P.T. turns to show business to indulge his limitless imagination, rising from nothing to create the Barnum & Bailey circus. Featuring catchy musical numbers, exotic performers and daring acrobatic feats, Barnum''s mesmerizing spectacle soon takes the world by storm to become the greatest show on Earth', 'https://youtu.be/jr9QtXwC9vc?si=a46nRADntlG9KXkg', 105, 14);
 insert into Movies (genre, language, movie_title, release_date, cast, synopsis, trailer, duration, movie_id) values ('Comedy', 'Gujarati', 'Rev', '2012-03-13 00:00:00', 'Aryan Simhadri', 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.', 'https://g.co/at/feugiat.html?eros=vestibulum&suspendisse=aliquet&accumsan=ultrices&tortor=erat&quis=tortor&turpis=sollicitudin&sed=mi&ante=sit&vivamus=amet&tortor=lobortis&duis=sapien&mattis=sapien&egestas=non&metus=mi&aenean=integer&fermentum=ac&donec=neque&ut=duis&mauris=bibendum&eget=morbi&massa=non&tempor=quam&convallis=nec&nulla=dui&neque=luctus&libero=rutrum&convallis=nulla&eget=tellus&eleifend=in&luctus=sagittis&ultricies=dui&eu=vel&nibh=nisl&quisque=duis&id=ac&justo=nibh&sit=fusce&amet=lacus&sapien=purus&dignissim=aliquet&vestibulum=at&vestibulum=feugiat&ante=non&ipsum=pretium&primis=quis&in=lectus&faucibus=suspendisse&orci=potenti&luctus=in&et=eleifend&ultrices=quam&posuere=a&cubilia=odio&curae=in&nulla=hac&dapibus=habitasse&dolor=platea&vel=dictumst&est=maecenas&donec=ut&odio=massa&justo=quis&sollicitudin=augue&ut=luctus&suscipit=tincidunt&a=nulla&feugiat=mollis&et=molestie&eros=lorem&vestibulum=quisque&ac=ut&est=erat&lacinia=curabitur&nisi=gravida&venenatis=nisi&tristique=at&fusce=nibh&congue=in&diam=hac&id=habitasse&ornare=platea&imperdiet=dictumst&sapien=aliquam&urna=augue&pretium=quam&nisl=sollicitudin&ut=vitae&volutpat=consectetuer&sapien=eget&arcu=rutrum&sed=at', 211, 1);
 insert into Movies (genre, language, movie_title, release_date, cast, synopsis, trailer, duration, movie_id) values ('Drama|Thriller', 'Lithuanian', 'Ms', '2012-03-13 00:00:00', 'Ryan Reynolds', 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.', 'http://networksolutions.com/donec/dapibus/duis.xml?morbi=rutrum&ut=rutrum&odio=neque&cras=aenean&mi=auctor&pede=gravida&malesuada=sem&in=praesent&imperdiet=id&et=massa&commodo=id&vulputate=nisl&justo=venenatis&in=lacinia&blandit=aenean&ultrices=sit&enim=amet&lorem=justo&ipsum=morbi&dolor=ut&sit=odio&amet=cras', 108, 2);
 insert into Movies (genre, language, movie_title, release_date, cast, synopsis, trailer, duration, movie_id) values ('Horror', 'Swedish', 'Dr', '2012-03-13 00:00:00', 'Chris Hemsworth', 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.', 'https://livejournal.com/leo/pellentesque.png?iaculis=nulla&justo=nisl&in=nunc&hac=nisl&habitasse=duis&platea=bibendum&dictumst=felis&etiam=sed&faucibus=interdum&cursus=venenatis&urna=turpis&ut=enim&tellus=blandit&nulla=mi&ut=in&erat=porttitor&id=pede&mauris=justo&vulputate=eu&elementum=massa&nullam=donec&varius=dapibus&nulla=duis&facilisi=at&cras=velit&non=eu&velit=est&nec=congue&nisi=elementum&vulputate=in&nonummy=hac&maecenas=habitasse&tincidunt=platea&lacus=dictumst&at=morbi&velit=vestibulum&vivamus=velit&vel=id&nulla=pretium&eget=iaculis&eros=diam&elementum=erat&pellentesque=fermentum&quisque=justo&porta=nec&volutpat=condimentum&erat=neque&quisque=sapien&erat=placerat&eros=ante&viverra=nulla&eget=justo&congue=aliquam&eget=quis&semper=turpis&rutrum=eget&nulla=elit&nunc=sodales&purus=scelerisque&phasellus=mauris&in=sit&felis=amet&donec=eros&semper=suspendisse&sapien=accumsan&a=tortor&libero=quis&nam=turpis&dui=sed&proin=ante&leo=vivamus&odio=tortor&porttitor=duis&id=mattis&consequat=egestas&in=metus&consequat=aenean&ut=fermentum&nulla=donec&sed=ut&accumsan=mauris&felis=eget&ut=massa&at=tempor&dolor=convallis&quis=nulla', 113, 3);
@@ -2292,12 +2261,7 @@ DELETE FROM Employee WHERE employee_id = 10;
 -- Create a new movie to run
 insert into Movies (genre, language, movie_title, release_date, cast, synopsis, trailer, duration, movie_id)
 values ('Action/Sci-Fi', 'English', 'Avengers: Endgame', '2019-04-26 8:13:00',
-'Robert Downey Jr, Scarlett Johansoon, Chris Evans, Chris Hemsworth, Mark Ruffalo, Jeremy Renner, Brie Larson,
-Paul Rudd, Don Cheadle, Elizabeth Olsen, Tom Holland', 'Adrift in space with no food or water, Tony Stark sends a
-message to Pepper Potts as his oxygen supply starts to dwindle. Meanwhile, the remaining Avengers -- Thor, Black
-Widow, Captain America and Bruce Banner -- must figure out a way to bring back their vanquished allies for an
-epic showdown with Thanos -- the evil demigod who decimated the planet and the universe.',
-'https://youtu.be/TcMBFSGVi1c?si=ytdT7cDqA-Wse-sc', 120, 15);
+'Robert Downey Jr, Scarlett Johansoon', 'Adrift in space with no food or water, Tony Stark sends a message to Pepper Potts as his oxygen supply starts to dwindle. Meanwhile, the remaining Avengers -- Thor, Black Widow, Captain America and Bruce Banner -- must figure out a way to bring back their vanquished allies for an epic showdown with Thanos -- the evil demigod who decimated the planet and the universe.', 'https://youtu.be/TcMBFSGVi1c?si=ytdT7cDqA-Wse-sc', 120, 15);
 
 -- Read report on movies that are running in her theatre
 SELECT movie_title, genre, language FROM Movies;
@@ -2499,8 +2463,7 @@ WHERE customer_id = 6;
 -- User Persona #4: Reese Miller --------
 
 -- create for Troubleshooting (ticket sales)
-insert into Ticket_Sales(price, num_tickets_sold, customer_id, sale_id)
-values(10, 1, 09097, 77888);
+insert into Ticket_Sales(price, num_tickets_sold, customer_id, sale_id) values(10, 1, 29097, 77888);
 
 -- read
 SELECT *
@@ -2511,7 +2474,7 @@ WHERE sale_id = 78;
 UPDATE Ticket_Sales
 SET price = 20,
     num_tickets_sold = 2,
-    customer_id = 09097
+    customer_id = 29097
 WHERE sale_id = 77888;
 
 -- delete
@@ -2521,7 +2484,7 @@ WHERE sale_id = 77888;
 
 -- create for Troubleshooting (snack purchases)
 insert into Food_Sales(food_id, expiration_date, type_of_food, item_id)
-values(55688, '2024-07-07 11:59:59 AM', 'pretzel', 00049);
+values(55688, '2024-07-07 11:59:59 AM', 'pretzel', 20049);
 
 -- read
 SELECT *
@@ -2532,7 +2495,7 @@ WHERE food_id = 28540;
 UPDATE Food_Sales
 SET expiration_date = '2024-07-07 11:59:59 AM',
     type_of_food = 'pretzel',
-    item_id = 00050
+    item_id = 20050
 WHERE food_id = 28540;
 
 -- read for technical support
@@ -2549,14 +2512,14 @@ SET first_name = 'Becca',
     gender = 'female',
     state = 'New Jersey',
     street = '4 Mac Drive',
-    postal = 008844,
+    postal = 208844,
     city = 'Hillsborough',
     type_of_employment = 'full-time'
 WHERE employee_id = 99234;
 
 -- create for Signs
 insert into Signs(sign_location, sign_id, sign_text, sign_design,technique_id, page_id)
-values('theatre 2', 002283, 'Spiderman 3', 'framed', 33890, 77541);
+values('theatre 2', 202283, 'Spiderman 3', 'framed', 33890, 77541);
 
 -- read
 SELECT *
@@ -2570,16 +2533,16 @@ SET sign_location = 'theatre 7',
     sign_design = 'framed',
     technique_id = 33890,
     page_id = 77541
-WHERE sign_id = 002283;
+WHERE sign_id = 202283;
 
 -- delete
 DELETE
 FROM Signs
-WHERE sign_id = 002283;
+WHERE sign_id = 202283;
 
 -- create for graphic design
 insert into Website_Page (page_id, design, text, employee_id)
-values(09452, 'red and blue', 'A transformative movie experience', 44453);
+values(29452, 'red and blue', 'A transformative movie experience', 44453);
 
 -- read
 SELECT *
@@ -2591,7 +2554,7 @@ UPDATE Website_Page
 SET design = 'pink and blue',
     text = 'A transformative movie experience',
     employee_id = 44453
-WHERE page_id = 09452;
+WHERE page_id = 29452;
 
 -- create for movie setup
 insert into Equipment(movie_id, location, type, equipment_id)
