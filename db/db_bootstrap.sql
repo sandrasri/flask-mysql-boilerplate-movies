@@ -1,6 +1,6 @@
 
 create database movie_db;
--m 
+
 grant all privileges on movie_db.* to 'webapp'@'%';
 flush privileges;
 
